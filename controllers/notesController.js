@@ -14,16 +14,20 @@ exports.showAllNotes = async (req,res) =>{
 
 
 
-exports.makeNewNote =  async (req,res) =>{
+exports.createANewNote =  async (req,res) =>{
     try {
         const newNote =  new Note(req.body)
         await newNote.save()
-        res.json(newNote)
+        res.redirect('/notes/new')
+        
 
     } catch (error) {
         res.json({message: message.error})        
     }
 }
+
+
+
 
 exports.showANote = async (req,res) =>{
     try {
