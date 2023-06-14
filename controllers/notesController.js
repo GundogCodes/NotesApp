@@ -4,7 +4,9 @@ const Note = require('../models/note')
 exports.showAllNotes = async (req,res) =>{
     try {
         const allNotes =  await Note.find({})
-        res.json({allNotes})
+        res.render('../views/notes/Index', {
+            notes:allNotes
+        })
     } catch (error) {
         res.json({message: error.message})
     }
