@@ -15,18 +15,27 @@ exports.showAllNotes = async (req,res) =>{
 
 
 exports.createANewNote =  async (req,res) =>{
+    if(req.body.completed === 'on'){ // we're gonna use a checkbox
+        req.body.completed = true
+    }else{
+        req.body.completed = false
+    }
     try {
-        const newNote =  new Note(req.body)
-        await newNote.save()
-        res.redirect('/notes/new')
-        
-
+        const createdNote = await Note.create(req.body)
+        res.redirect(`/notes/${createdNote._id}`)
     } catch (error) {
-        res.json({message: message.error})        
+        res.status(400).send({message: error.message})
     }
 }
 
+exports.newNotePage = async (req,res) =>{
+    try {
 
+        res.render('../views/notes/New')
+    } catch (error) {
+        res.json({message: message.error}) 
+    }
+}
 
 
 exports.showANote = async (req,res) =>{
