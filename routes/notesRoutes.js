@@ -6,8 +6,8 @@ const notesController  = require('../controllers/notesController')
 
 router.get('/notes', notesController.showAllNotes) //done
 
-router.post('/notes', notesController.createANewNote) //done
-router.get('/notes/new', notesController.newNotePage)
+router.post('/notes', notesController.createANewNote) //creates a doc in mongo
+router.get('/notes/new', notesController.newNotePage) // view for them to make a note
 
 router.delete('/notes/:id', notesController.deleteNote) //done
 router.put('/notes/edit/:id', notesController.editNote)

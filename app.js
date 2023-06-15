@@ -9,6 +9,7 @@ app.set('view engine','jsx')
 app.engine('jsx',jsxEngine())
 
 app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 app.use(morgan('combined'))
 app.use('/', notesRoutes)
 module.exports = app
