@@ -41,7 +41,9 @@ exports.newNotePage = async (req,res) =>{
 exports.showANote = async (req,res) =>{
     try {
         const foundNote = await Note.findById(req.params.id)
-        res.json(foundNote)
+        res.render('../views/notes/Show',{
+            note:foundNote
+        })
     } catch (error) {
         res.json({message: error.message})
     }
@@ -51,10 +53,24 @@ exports.deleteNote = async (req,res) =>{
     try {
         const foundNote = await Note.findByIdAndDelete(req.params.id)
         res.json({message:`${foundNote.title} note has been deleted`})
+        .then(res.redirect('/notes'))
 
     } catch (error) {
         res.json({message:error.message})
     }
+}
+
+exports.editNotePage =  async (req,res)=>{
+
+    try {
+        const foundNote  = await Note.findOne({'_id':req.params.id})
+        res.render('../views/notes/Edit', {
+            note:foundNote
+        })
+    } catch (error) {
+        res.json({message:error.message})   
+    }
+
 }
 
 exports.editNote = async (req,res) =>{
