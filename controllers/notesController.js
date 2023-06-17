@@ -12,8 +12,6 @@ exports.showAllNotes = async (req,res) =>{
     }
 }
 
-
-
 exports.createANewNote =  async (req,res) =>{
     if(req.body.completed === 'on'){ // we're gonna use a checkbox
         req.body.completed = true
@@ -37,10 +35,9 @@ exports.newNotePage = async (req,res) =>{
     }
 }
 
-
 exports.showANote = async (req,res) =>{
     try {
-        const foundNote = await Note.findById(req.params.id)
+        const foundNote = await Note.findOne({_id:req.params.id})
         res.render('../views/notes/Show',{
             note:foundNote
         })
@@ -51,9 +48,9 @@ exports.showANote = async (req,res) =>{
 
 exports.deleteNote = async (req,res) =>{
     try {
-        const foundNote = await Note.findByIdAndDelete(req.params.id)
-        res.json({message:`${foundNote.title} note has been deleted`})
-        .then(res.redirect('/notes'))
+        const foundNote = await Note.findOneAndDelete({'_id':req.params.id})
+        res.redirect('/notes')
+        
 
     } catch (error) {
         res.json({message:error.message})
@@ -74,10 +71,18 @@ exports.editNotePage =  async (req,res)=>{
 }
 
 exports.editNote = async (req,res) =>{
+    if(req.body.completed === 'on'){
+        req.body.completed = true
+    } else{
+        req.body.completed =false
+    }
     try {
-        const foundNote =  await Note.findOneAndUpdate({'_id':req.params.id}, req.body, {new:true})
-        res.json({message:`${foundNote.title} as been updated: Title: ${foundNote.title}, Description: ${foundNote.description}, Completion: ${foundNote.completed}`})
+        const foundNote =  await Note.findOneAndUpdate({'_id':req.params.id}, req.body, {new: true})
+        //res.json({message:`${foundNote.title} as been updated: Title: ${foundNote.title}, Description: ${foundNote.description}, Completion: ${foundNote.completed}`})
+        .then(()=>{
+            res.redirect(`/notes/${req.params.id}`)
+        })
     } catch (error) {
-        
+        res.status(400).send({message:error.message}) 
     }
 }

@@ -4,7 +4,7 @@ function Edit(props){
     return(
         <div>
             <h1>Edit Note
-            <a href="/notes">All Notes</a> <br/>
+             <br/>
             </h1>
             <form action={`/notes/${props.note._id}?_method=PUT`} method="POST">
                 Title:<input type = "text" name ="title" defaultValue={props.note.title}/> <br/>
@@ -13,9 +13,7 @@ function Edit(props){
                 type='checkbox' name='completed'/>} <br/>
                 <input type="submit" value = "Update Note"/>
             </form>
-            <form action={`/notes/${props.note._id}`} method="DELETE">
-                <button>Delete Note</button>
-            </form>
+            <a href="/notes">All Notes</a>
         </div>
     )
 }
