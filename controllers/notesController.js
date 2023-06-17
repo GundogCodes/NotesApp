@@ -37,7 +37,7 @@ exports.newNotePage = async (req,res) =>{
 
 exports.showANote = async (req,res) =>{
     try {
-        const foundNote = await Note.findOne({_id:req.params.id})
+        const foundNote = await Note.findOne({'_id':req.params.id})
         res.render('../views/notes/Show',{
             note:foundNote
         })
