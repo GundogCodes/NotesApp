@@ -44,14 +44,17 @@ const formStyle ={
 
 
 const titleStyle = {
-    padding:'10px'
+    padding:'10px',
+    borderRadius:'15px'
 }
 const descriptionStyle ={
-    padding:'10px'
+    padding:'10px',
+    borderRadius:'15px'
 }
 
 const completedStyle ={
-    color:'white'
+    color:'white',
+    padding:'10px'
 }
 const buttonStyle = {
     margin:'10px',

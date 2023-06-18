@@ -41,7 +41,7 @@ const ulStyle = {
     justifyContent:'center',
     alignItems:'center',
     color:'#12355b',
-    backgroundColor:'#c9f0ff',
+    backgroundColor:'pink',
     borderRadius:'15px',
     listStyleType:'none',
     padding:'10px'
@@ -64,6 +64,12 @@ const pStyle ={
     margin:'0'
 }
 
+const noteTitleStyle ={
+    fontSize:'20px',
+   // backgroundColor:'steelBlue',
+    borderRadius:'5px'
+}
+
 function Index(props){
     return (
     <div style={outerDiv}>
@@ -75,7 +81,7 @@ function Index(props){
                     props.notes.map((note)=>{
                         return(
                             <li style={liStyle} key={note._id}>
-                                <a href={`/notes/${note._id}`}>{note.title}:{note.completed?` is completed`:` is not completed`}</a>
+                                <a href={`/notes/${note._id}`}><span style={noteTitleStyle}>{note.title}</span>:{note.completed?` is completed`:` is not completed`}</a>
                             </li>
                         )
                     })
