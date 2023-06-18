@@ -34,10 +34,12 @@ const headerStyle = {
 }
 
 const ulStyle = {
+    height:'300px',
+    width:'300px',
     display:'flex',
     flexDirection:'column',
     justifyContent:'center',
-    alignItems:'flex-start',
+    alignItems:'center',
     color:'#12355b',
     backgroundColor:'#c9f0ff',
     borderRadius:'15px',
@@ -47,16 +49,19 @@ const ulStyle = {
 }
 const liStyle = {
     fontFamily:'Bruno Ace, cursive',
-    color:'#edddd4',
     display:'flex',
     
 }
 const aStyle = {
-    color:'#a7c2cc'
+    color:'white',
+    backgroundColor:'steelBlue',
+    padding:'7px',
+    borderRadius:'15px'
 }
 
 const pStyle ={
-    color:'white'
+    color:'white',
+    margin:'0'
 }
 
 function Index(props){

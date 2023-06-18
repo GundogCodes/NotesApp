@@ -44,11 +44,22 @@ const completedStyle ={
 
 const aStyle = {
     width:'100px',
-    backgroundColor:'#edddd4',
-    borderRadius:'10px'
+    backgroundColor:'steelBlue',
+    borderRadius:'10px',
+    color:'white',
+    padding:'8px',
+    marginBottom:'10px'
+
 }
 
 const formStyle ={
+
+}
+
+const notesStyle ={
+    width:'100px',
+    backgroundColor:'white',
+    borderRadius:'7px',
 
 }
 
@@ -56,7 +67,8 @@ const buttonStyle ={
     margin:'10px',
     height:'50px',
     width:'200px',
-    borderRadius:'10px'
+    borderRadius:'25px',
+    backgroundColor:'tomato'
 }
 
 function Show(props){
@@ -68,10 +80,10 @@ function Show(props){
           <h3 style={completedStyle}>{props.note.completed?'Completed':' Not Completed'}</h3><br/>
          <a style={aStyle} href = {`/notes/edit/${props.note._id}`}> Edit Note</a>
 
+            <a style={notesStyle} href="/notes">All Notes</a>
          <form style={formStyle} action={`/notes/${props.note._id}?_method=DELETE`} method="POST">
                 <input style={buttonStyle} type="submit" value={`Delete this "${props.note.title}" Note `}/>
             </form>
-            <a href="/notes">All Notes</a>
         </div>
         </div>
     )

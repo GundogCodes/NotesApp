@@ -65,9 +65,10 @@ const buttonStyle = {
 const notesStyle = {
     height:'20px',
     width:'100px',
-    backgroundColor:'#edddd4',
+    backgroundColor:'white',
     borderRadius:'15px',
-    marginTop:'5px'
+    marginTop:'5px',
+    padding:'5px'
 }
 function New(props){
     return(
